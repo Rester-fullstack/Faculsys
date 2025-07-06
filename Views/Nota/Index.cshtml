@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FaculSys.Models.Nota>
+
+@{
+    ViewData["Title"] = "Notas";
+}
+
+<h1>Notas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Lançar Nova Nota</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Disciplina</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Média</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nota in Model)
+        {
+            <tr>
+                <td>@nota.Matricula?.Aluno?.Nome</td>
+                <td>@nota.Matricula?.Disciplina?.Nome</td>
+                <td>@nota.Nota1</td>
+                <td>@nota.Nota2</td>
+                <td>@nota.Media</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@nota.Id" class="btn btn-info btn-sm">Detalhes</a> |
+                    <a asp-action="Edit" asp-route-id="@nota.Id" class="btn btn-warning btn-sm">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@nota.Id" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

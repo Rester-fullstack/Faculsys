@@ -1,0 +1,30 @@
+﻿@model FaculSys.Models.Matricula
+
+@{
+    ViewData["Title"] = "Nova Matrícula";
+}
+
+<h1>Nova Matrícula</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="AlunoId">Aluno</label>
+        <select asp-for="AlunoId" class="form-control" asp-items="ViewBag.AlunoId"></select>
+        <span asp-validation-for="AlunoId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DisciplinaId">Disciplina</label>
+        <select asp-for="DisciplinaId" class="form-control" asp-items="ViewBag.DisciplinaId"></select>
+        <span asp-validation-for="DisciplinaId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

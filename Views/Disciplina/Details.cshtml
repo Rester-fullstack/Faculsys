@@ -1,0 +1,21 @@
+﻿@model FaculSys.Models.Disciplina
+
+@{
+    ViewData["Title"] = "Detalhes da Disciplina";
+}
+
+<h1>Detalhes da Disciplina</h1>
+
+<div>
+    <h4>@Model.Nome</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Professor</dt>
+        <dd class="col-sm-10">@Model.Professor?.Nome</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</p>

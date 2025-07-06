@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FaculSys.Models.Matricula>
+
+@{
+    ViewData["Title"] = "Matrículas";
+}
+
+<h1>Matrículas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nova Matrícula</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Disciplina</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var matricula in Model)
+        {
+            <tr>
+                <td>@matricula.Aluno?.Nome</td>
+                <td>@matricula.Disciplina?.Nome</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@matricula.Id" class="btn btn-info btn-sm">Detalhes</a> |
+                    <a asp-action="Edit" asp-route-id="@matricula.Id" class="btn btn-warning btn-sm">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@matricula.Id" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
